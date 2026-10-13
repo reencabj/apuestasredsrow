@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EL CLUB DE LA PERREA</title>
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="masthead"><span>EL CLUB DE LA PERREA</span><span>HECHO PARA EL CARA A CARA ↗</span></div>
+        <div>
+          <p class="eyebrow">Elegí tu lado. Seguí el pozo.</p>
+          <h1><span class="title-intro">EL CLUB DE LA</span>PERREA</h1>
+        </div>
+        <p class="lede">
+          Varias peleas abiertas. Cada apuesta lleva nombre, teléfono y monto.
+        </p>
+        <svg class="graffiti-art" viewBox="0 0 260 210" aria-hidden="true" focusable="false">
+          <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke-width="7" d="m83 65 28-43 13 49 49-8-34 36 21 44-49-20-37 32 6-52-42-22z" />
+            <path stroke-width="5" d="m188 30 14 19m-13-3 17-15m12 16 14 20m-15-3 18-17m-19 94 19-10m-16 24 22-4M30 47l-9-15m22 8-1-19" />
+            <path stroke-width="9" d="m23 177 155-17-111 32 153-13" />
+          </g>
+          <g fill="currentColor"><circle cx="55" cy="121" r="3"/><circle cx="199" cy="90" r="4"/><circle cx="44" cy="144" r="2"/><circle cx="241" cy="108" r="2"/></g>
+        </svg>
+      </header>
+
+      <section class="cloud-panel" id="cloud-panel" hidden>
+        <h2>Acceso al club</h2>
+        <p id="cloud-status" role="status" aria-live="polite"></p>
+        <form id="login-form" hidden>
+          <label>Email <input name="email" type="email" autocomplete="username" required /></label>
+          <label>Contraseña <input name="password" type="password" autocomplete="current-password" required /></label>
+          <button type="submit" class="primary">Entrar</button>
+        </form>
+        <div class="cloud-actions">
+          <button id="cloud-refresh" type="button" hidden>Actualizar</button>
+          <button id="cloud-import" type="button" hidden>Importar apuestas de este navegador</button>
+          <button id="cloud-logout" type="button" hidden>Salir</button>
+        </div>
+      </section>
+      <section class="new-fight">
+        <h2>Nueva pelea</h2>
+        <form id="new-fight-form">
+          <label>
+            Primero
+            <input name="a" autocomplete="name" placeholder="Nombre del competidor" required />
+          </label>
+          <label>
+            Segundo
+            <input name="b" autocomplete="name" placeholder="Nombre del rival" required />
+          </label>
+          <button class="primary" type="submit">Crear pelea</button>
+          <p class="error" id="new-fight-error" hidden></p>
+        </form>
+      </section>
+
+      <div class="board-heading"><h2>EN EL RING</h2><span>EL POZO SE MUEVE. LOS PAGOS TAMBIÉN.</span></div>
+      <main class="board" id="board"></main>
+      <details class="archive-section" id="archive-section" hidden>
+        <summary id="archive-label">Peleas archivadas</summary>
+        <div class="board" id="archive-board"></div>
+      </details>
+      <footer>EL CLUB DE LA PERREA <span>✳</span> CARA A CARA <span>✳</span> EN ESTE DISPOSITIVO</footer>
+    </div>
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>

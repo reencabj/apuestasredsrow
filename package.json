@@ -1,0 +1,8 @@
+{
+  "name": "app-apuestas",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}
