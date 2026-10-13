@@ -2,6 +2,7 @@ import { fightMultipliers, settleFight } from "./settle.js";
 import { matchingContacts, rememberContact } from "./contacts.js";
 import { supabaseConfig } from "./supabase-config.js";
 import { createCloudStore } from "./cloud.js";
+import { authErrorMessage, recoveryLinkError } from "./auth-errors.js";
 
 const STORAGE_KEY = "apuestas-locales";
 const CONTACTS_KEY = "apuestas-contactos";
@@ -28,6 +29,7 @@ const recoveryForm = document.querySelector("#recovery-form");
 let recovering = new URLSearchParams(location.hash.slice(1)).get("type") === "recovery" ||
   sessionStorage.getItem("club-password-recovery") === "true";
 const recoveryRedirect = "https://reencabj.github.io/apuestasredsrow/";
+const linkError = recoveryLinkError(location.hash);
 const refreshButton = document.querySelector("#cloud-refresh");
 const importButton = document.querySelector("#cloud-import");
 const logoutButton = document.querySelector("#cloud-logout");
@@ -548,7 +550,7 @@ async function initializeCloud() {
       loginForm.hidden = false;
       cloudStatus.textContent = "El enlace venció o ya fue usado. Pedí otro con Olvidé mi contraseña.";
     }
-    else cloudStatus.textContent = "Iniciá sesión con una cuenta autorizada.";
+    else cloudStatus.textContent = linkError || "Iniciá sesión con una cuenta autorizada.";
     poll = setInterval(() => { if (cloudReady && !document.hidden) refreshCloud(); }, 5000);
   } catch (error) {
     cloudStatus.textContent = error.message || "No se pudo conectar con Supabase.";
@@ -569,7 +571,7 @@ loginForm.addEventListener("submit", async (event) => {
     await refreshCloud();
     clearInterval(poll);
     poll = setInterval(() => { if (cloudReady && !document.hidden) refreshCloud(); }, 5000);
-  } catch { cloudStatus.textContent = "No se pudo ingresar. Revisá email, contraseña y conexión."; }
+  } catch (error) { cloudStatus.textContent = authErrorMessage(error); }
   finally { submit.disabled = false; }
 });
 document.querySelector("#forgot-password").addEventListener("click", async () => {
