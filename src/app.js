@@ -29,7 +29,7 @@ const recoveryForm = document.querySelector("#recovery-form");
 let recovering = new URLSearchParams(location.hash.slice(1)).get("type") === "recovery";
 // Las marcas de versiones anteriores no deben reabrir la recuperación.
 sessionStorage.removeItem("club-password-recovery");
-const recoveryRedirect = "https://reencabj.github.io/apuestasredsrow/";
+const recoveryRedirect = "https://clubdelaperrea.reenz.site/";
 const linkError = recoveryLinkError(location.hash);
 const refreshButton = document.querySelector("#cloud-refresh");
 const importButton = document.querySelector("#cloud-import");

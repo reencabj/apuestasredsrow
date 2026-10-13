@@ -6,7 +6,7 @@ App de apuestas de Reds Row: peleas, multiplicadores actualizados, reparto con 1
 
 En Settings > Pages elegir GitHub Actions. Al subir cambios a main, el workflow ejecuta las pruebas y publica únicamente index.html y src.
 
-Dirección prevista: https://reencabj.github.io/apuestasredsrow/
+Dirección: https://clubdelaperrea.reenz.site/
 
 ## Supabase
 
