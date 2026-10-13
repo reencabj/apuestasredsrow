@@ -34,6 +34,12 @@
           <label>Email <input name="email" type="email" autocomplete="username" required /></label>
           <label>Contraseña <input name="password" type="password" autocomplete="current-password" required /></label>
           <button type="submit" class="primary">Entrar</button>
+          <button type="button" id="forgot-password">Olvidé mi contraseña</button>
+        </form>
+        <form id="recovery-form" hidden>
+          <label>Nueva contraseña <input name="newPassword" type="password" autocomplete="new-password" minlength="8" required /></label>
+          <label>Repetir contraseña <input name="confirmPassword" type="password" autocomplete="new-password" minlength="8" required /></label>
+          <button type="submit" class="primary">Guardar nueva contraseña</button>
         </form>
         <div class="cloud-actions">
           <button id="cloud-refresh" type="button" hidden>Actualizar</button>

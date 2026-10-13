@@ -86,7 +86,7 @@ summary { cursor: pointer; font-size: .75rem; font-weight: 800; text-transform: 
 .settlement { display: grid; gap: .8rem; }
 .cloud-panel { margin: 1rem 0; padding: 1rem; border: 2px solid var(--text); background: #fffefa; }
 .cloud-panel[hidden], .cloud-panel [hidden] { display: none; }
-#login-form { display: grid; gap: .8rem; max-width: 26rem; }
+#login-form, #recovery-form { display: grid; gap: .8rem; max-width: 26rem; }
 .cloud-actions { display: flex; flex-wrap: wrap; gap: .6rem; }
 .cloud-panel h2 { font-size: 1.5rem; }
 #cloud-status { font-size: .85rem; overflow-wrap: anywhere; }
