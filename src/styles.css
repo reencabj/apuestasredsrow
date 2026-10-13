@@ -20,7 +20,7 @@ header { position: relative; padding-bottom: 2rem; }
 header h1 { position: relative; width: fit-content; margin: 0; color: var(--red); font-family: Impact, 'Arial Narrow', sans-serif; font-size: clamp(4.5rem, 12vw, 9rem); font-weight: 900; line-height: .9; letter-spacing: -.045em; transform: rotate(-2deg); }
 header h1 .title-intro { display: block; color: var(--text); font-size: .3em; letter-spacing: .03em; line-height: 1.7; }
 header h1::after { content: ''; position: absolute; height: 7px; width: 50%; right: -8%; bottom: 8%; background: var(--red); transform: rotate(-9deg); clip-path: polygon(0 30%, 96% 0, 100% 75%, 3% 100%); }
-.graffiti-art { position: absolute; top: 4rem; right: 3%; width: clamp(8rem, 25vw, 18rem); color: var(--red); pointer-events: none; transform: rotate(8deg); }
+.brand-logo { position: absolute; top: 4rem; right: 3%; width: clamp(8rem, 22vw, 15rem); height: auto; object-fit: contain; mix-blend-mode: multiply; pointer-events: none; transform: rotate(5deg); }
 header h1::after { bottom: -8%; right: -10%; width: 68%; height: 10px; }
 header .lede { margin-top: 2rem; }
 .card { position: relative; }
@@ -105,7 +105,7 @@ footer span { color: var(--red); font-size: 1.4rem; }
   .wrap { width: calc(100% - 1.5rem); }
   .masthead { font-size: .55rem; }
   .masthead span:last-child { max-width: 9rem; text-align: right; }
-  .graffiti-art { top: 4rem; right: 0; width: 4.5rem; }
+  .brand-logo { top: 4rem; right: 0; width: clamp(4.5rem, 16vw, 7rem); }
   header h1 { font-size: clamp(3rem, 15vw, 6rem); }
   .eyebrow { margin-top: 1.7rem; font-size: .65rem; }
   #new-fight-form { grid-template-columns: 1fr; }
