@@ -26,8 +26,9 @@ let poll = null;
 const cloudStatus = document.querySelector("#cloud-status");
 const loginForm = document.querySelector("#login-form");
 const recoveryForm = document.querySelector("#recovery-form");
-let recovering = new URLSearchParams(location.hash.slice(1)).get("type") === "recovery" ||
-  sessionStorage.getItem("club-password-recovery") === "true";
+let recovering = new URLSearchParams(location.hash.slice(1)).get("type") === "recovery";
+// Las marcas de versiones anteriores no deben reabrir la recuperación.
+sessionStorage.removeItem("club-password-recovery");
 const recoveryRedirect = "https://reencabj.github.io/apuestasredsrow/";
 const linkError = recoveryLinkError(location.hash);
 const refreshButton = document.querySelector("#cloud-refresh");
@@ -518,7 +519,7 @@ async function initializeCloud() {
     client.auth.onAuthStateChange((event) => {
       if (event === "PASSWORD_RECOVERY") {
         recovering = true;
-        sessionStorage.setItem("club-password-recovery", "true");
+        history.replaceState(null, "", location.pathname + location.search);
         showCloudAccess(false);
         loginForm.hidden = true;
         recoveryForm.hidden = false;
@@ -538,7 +539,7 @@ async function initializeCloud() {
     const { data, error } = await client.auth.getSession();
     if (error) throw error;
     if (data.session && recovering) {
-      sessionStorage.setItem("club-password-recovery", "true");
+      history.replaceState(null, "", location.pathname + location.search);
       loginForm.hidden = true;
       recoveryForm.hidden = false;
       cloudStatus.textContent = "Elegí una nueva contraseña de al menos 8 caracteres.";
@@ -604,9 +605,25 @@ recoveryForm.addEventListener("submit", async (event) => {
     recoveryForm.hidden = true;
     recovering = false;
     sessionStorage.removeItem("club-password-recovery");
+    history.replaceState(null, "", location.pathname + location.search);
     await refreshCloud();
   } catch { cloudStatus.textContent = "No se pudo cambiar la contraseña. Usá una distinta y segura; si el enlace venció, pedí otro."; }
   finally { button.disabled = false; }
+});
+document.querySelector("#cancel-recovery").addEventListener("click", async () => {
+  if (!client || recoveryForm.querySelector("button").disabled) return;
+  const { error } = await client.auth.signOut();
+  if (error) {
+    cloudStatus.textContent = "No se pudo salir. Revisá la conexión e intentá de nuevo.";
+    return;
+  }
+  recovering = false;
+  recoveryForm.reset();
+  recoveryForm.hidden = true;
+  sessionStorage.removeItem("club-password-recovery");
+  history.replaceState(null, "", location.pathname + location.search);
+  showCloudAccess(false);
+  cloudStatus.textContent = "Iniciá sesión con tu contraseña actual.";
 });
 refreshButton.addEventListener("click", refreshCloud);
 logoutButton.addEventListener("click", async () => {
