@@ -14,15 +14,15 @@
 [hidden] { display: none !important; }
 body { margin: 0; color: var(--text); font-family: 'Segoe UI', Arial, sans-serif; background-color: var(--bg); background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23000' opacity='.035' filter='url(%23n)' d='M0 0h180v180H0z'/%3E%3C/svg%3E"); }
 .wrap { width: min(1180px, calc(100% - 3rem)); margin: auto; padding: 1.2rem 0 2rem; }
-header { position: relative; padding-bottom: 2rem; }
+header { position: relative; padding: 1rem 0 1.3rem; }
 .masthead { display: flex; justify-content: space-between; gap: 1rem; padding-bottom: 1rem; border-bottom: 2px solid var(--text); font-size: .68rem; font-weight: 800; letter-spacing: .12em; }
-.eyebrow { margin: 2.4rem 0 .4rem; font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .15em; }
-header h1 { position: relative; width: fit-content; margin: 0; color: var(--red); font-family: Impact, 'Arial Narrow', sans-serif; font-size: clamp(4.5rem, 12vw, 9rem); font-weight: 900; line-height: .9; letter-spacing: -.045em; transform: rotate(-2deg); }
+.eyebrow { margin: 1rem 0 .3rem; font-size: .65rem; font-weight: 800; text-transform: uppercase; letter-spacing: .15em; }
+header h1 { position: relative; width: fit-content; margin: 0; color: var(--red); font-family: Impact, 'Arial Narrow', sans-serif; font-size: clamp(3.5rem, 8vw, 6rem); font-weight: 900; line-height: .9; letter-spacing: -.045em; transform: rotate(-2deg); }
 header h1 .title-intro { display: block; color: var(--text); font-size: .3em; letter-spacing: .03em; line-height: 1.7; }
 header h1::after { content: ''; position: absolute; height: 7px; width: 50%; right: -8%; bottom: 8%; background: var(--red); transform: rotate(-9deg); clip-path: polygon(0 30%, 96% 0, 100% 75%, 3% 100%); }
-.brand-logo { position: absolute; top: 4rem; right: 3%; width: clamp(8rem, 22vw, 15rem); height: auto; object-fit: contain; mix-blend-mode: multiply; pointer-events: none; transform: rotate(5deg); }
+.brand-logo { position: absolute; top: 3.8rem; right: 3%; width: clamp(5rem, 13vw, 9rem); height: auto; object-fit: contain; mix-blend-mode: multiply; pointer-events: none; transform: rotate(5deg); }
 header h1::after { bottom: -8%; right: -10%; width: 68%; height: 10px; }
-header .lede { margin-top: 2rem; }
+header .lede { margin-top: 1.2rem; font-size: .8rem; }
 .card { position: relative; }
 .card::before { content: ''; position: absolute; top: -5px; right: 1.3rem; width: 3.5rem; height: 9px; background: var(--red); transform: rotate(5deg); clip-path: polygon(0 15%, 100% 0, 94% 90%, 3% 100%); pointer-events: none; }
 .board-heading h2 { position: relative; }
@@ -84,12 +84,17 @@ details { border-top: 2px solid var(--text); padding-top: .8rem; }
 summary { cursor: pointer; font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; }
 .close-actions { margin-top: .8rem; }
 .settlement { display: grid; gap: .8rem; }
-.cloud-panel { margin: 1rem 0; padding: 1rem; border: 2px solid var(--text); background: #fffefa; }
+.cloud-panel { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: .5rem 1rem; margin: 0; padding: .65rem .85rem; border: 1px solid var(--text); border-bottom: 3px solid var(--red); background: var(--text); color: white; }
 .cloud-panel[hidden], .cloud-panel [hidden] { display: none; }
-#login-form, #recovery-form { display: grid; gap: .8rem; max-width: 26rem; }
-.cloud-actions { display: flex; flex-wrap: wrap; gap: .6rem; }
-.cloud-panel h2 { font-size: 1.5rem; }
-#cloud-status { font-size: .85rem; overflow-wrap: anywhere; }
+#login-form, #recovery-form { display: grid; grid-column: 1 / -1; grid-template-columns: repeat(2, minmax(0, 1fr)) auto auto; gap: .6rem; align-items: end; }
+.cloud-actions { display: flex; grid-column: 3; grid-row: 1; flex-wrap: wrap; justify-content: end; gap: .4rem; }
+.cloud-panel h2 { font: 800 .7rem 'Segoe UI', sans-serif; white-space: nowrap; letter-spacing: .06em; }
+#cloud-status { margin: 0; font-size: .72rem; color: #ddd8d0; overflow-wrap: anywhere; }
+.cloud-panel button { padding: .45rem .6rem; font-size: .65rem; border-color: #666; color: white; }
+.cloud-panel button:hover { background: #343434; }
+.cloud-panel .primary { border-color: var(--red); }
+.cloud-panel label { font-size: .6rem; }
+.cloud-panel input { padding: .5rem .6rem; font-size: .85rem; }
 .contact-suggestions { display: grid; max-height: 12rem; overflow-y: auto; border: 1px solid var(--line); }
 .contact-suggestions[hidden] { display: none; }
 .contact-option { display: flex; justify-content: space-between; gap: .75rem; text-align: left; border: 0; border-bottom: 1px solid var(--line); text-transform: none; letter-spacing: normal; }
@@ -105,9 +110,13 @@ footer span { color: var(--red); font-size: 1.4rem; }
   .wrap { width: calc(100% - 1.5rem); }
   .masthead { font-size: .55rem; }
   .masthead span:last-child { max-width: 9rem; text-align: right; }
-  .brand-logo { top: 4rem; right: 0; width: clamp(4.5rem, 16vw, 7rem); }
-  header h1 { font-size: clamp(3rem, 15vw, 6rem); }
-  .eyebrow { margin-top: 1.7rem; font-size: .65rem; }
+  .brand-logo { top: 3.7rem; right: 0; width: clamp(3.5rem, 15vw, 5rem); }
+  header h1 { font-size: clamp(2.5rem, 12vw, 4rem); }
+  .eyebrow { margin-top: .8rem; font-size: .6rem; }
+  .cloud-panel { grid-template-columns: minmax(0, 1fr) auto; gap: .4rem .6rem; padding: .6rem; }
+  #cloud-status { grid-column: 1 / -1; grid-row: 2; font-size: .65rem; }
+  .cloud-actions { grid-column: 2; }
+  #login-form, #recovery-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   #new-fight-form { grid-template-columns: 1fr; }
   .new-fight { padding: 1rem; }
   .board-heading span { max-width: 8rem; text-align: right; font-size: .55rem; }
